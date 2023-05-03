@@ -55,12 +55,12 @@ def _echo_statistics(statistics):
 debugger = pdb.Pdb(skip=['altwalker.*'], stdout=sys.stdout)
 reporter = None
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     try:
         planner = None
         executor = None
         statistics = {}
-        models = [("models/petclinic_full.json","random(vertex_coverage(100))")]
+        models = [("models/petclinic.json","random(vertex_coverage(100))")]
         steps = None
         graphwalker_port = 5000
         start_element=None
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         planner = create_planner(models=models, steps=steps, port=graphwalker_port, start_element=start_element,
                                 verbose=True, unvisited=unvisited, blocked=blocked)
         executor = create_executor(tests, executor_type, url=url)
-        reporter = CustomJunitReporter() 
+        reporter = CustomJunitReporter()
 
         walker = create_walker(planner, executor, reporter=reporter)
         walker.run()
@@ -95,4 +95,3 @@ if __name__ == "__main__":
 
         if executor:
             executor.kill()
-    
