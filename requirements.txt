@@ -2,4 +2,3 @@ altwalker
 selenium
 pypom
 faker
-junit-xml

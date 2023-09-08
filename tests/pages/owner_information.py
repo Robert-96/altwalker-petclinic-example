@@ -7,7 +7,6 @@ from selenium.webdriver.common.keys import Keys
 from .base import BasePage
 
 
-
 class OwnerInformationPage(BasePage):
     """owner information"""
 
@@ -25,7 +24,6 @@ class OwnerInformationPage(BasePage):
     _visit_locator = (By.ID, "visit")
 
     _pets_locator = (By.XPATH, "//table/tbody/tr/td//dl")
-
 
     def click_add_new_pet(self):
         self.find_element(*self._add_new_pet_locator).click()
@@ -47,7 +45,6 @@ class OwnerInformationPage(BasePage):
         select = Select(self.find_element(*self._type_locator))
         select.select_by_value(type)
 
-
     def click_submit(self):
         self.find_element(*self._submit_button_locator).click()
 
@@ -64,5 +61,3 @@ class OwnerInformationPage(BasePage):
     @property
     def number_of_pets(self):
        return len(self.find_elements(*self._pets_locator))
-
-       

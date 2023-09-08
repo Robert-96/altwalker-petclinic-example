@@ -1,19 +1,19 @@
+import sys
+import pdb
 import unittest
 
+from .pages.base import BasePage
+from .pages.home import HomePage
+from .pages.find_owners import FindOwnersPage
+from .pages.owners import OwnersPage
+from .pages.new_owner import NewOwnerPage
+from .pages.veterinarians import VeterinariansPage
+from .pages.owner_information import OwnerInformationPage
+
+from faker import Faker
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from tests.pages.base import BasePage
-from tests.pages.home import HomePage
-from tests.pages.find_owners import FindOwnersPage
-from tests.pages.owners import OwnersPage
-from tests.pages.new_owner import NewOwnerPage
-from tests.pages.veterinarians import VeterinariansPage
-from tests.pages.owner_information import OwnerInformationPage
-
-import sys
-import pdb
-from faker import Faker
 
 debugger = pdb.Pdb(skip=['altwalker.*'], stdout=sys.stdout)
 fake = Faker()
@@ -40,6 +40,7 @@ def setUpRun():
     driver.implicitly_wait(15)
     print("Window size: {width}x{height}".format(**driver.get_window_size()))
 
+
 def tearDownRun():
     """Close the webdriver."""
 
@@ -47,6 +48,7 @@ def tearDownRun():
 
     print("Close the Firefox session")
     driver.quit()
+
 
 class BaseModel(unittest.TestCase):
 	"""Contains common methods for all models."""
@@ -60,7 +62,7 @@ class BaseModel(unittest.TestCase):
 		page = HomePage(self.driver)
 		self.assertEqual(page.heading_text, "Welcome", "Welcome heading should be present")
 		self.assertTrue(page.is_footer_present, "footer should be present")
-	
+
 	def v_FindOwners(self):
 		page = FindOwnersPage(self.driver)
 		self.assertEqual("Find Owners",page.heading_text, "Find Owners heading should be present")
@@ -99,6 +101,7 @@ class BaseModel(unittest.TestCase):
 
 
 class PetClinic(BaseModel):
+
 	def e_StartBrowser(self):
 		page = HomePage(self.driver, BASE_URL)
 		page.open()
@@ -115,6 +118,7 @@ class PetClinic(BaseModel):
 		page = HomePage(self.driver)
 		page.click_find_owners()
 
+
 class FindOwners(BaseModel):
 
 	def e_AddOwner(self):
@@ -127,6 +131,7 @@ class FindOwners(BaseModel):
 
 
 class OwnerInformation(BaseModel):
+
 	def e_UpdatePet(self):
 		page = OwnerInformationPage(self.driver)
 		page.click_submit()
@@ -162,7 +167,7 @@ class OwnerInformation(BaseModel):
 		page = OwnerInformationPage(self.driver)
 		self.assertEqual(page.heading_text, "New Visit", "New Visit heading should be present")
 		self.assertTrue(page.is_visit_visible, "visit should be present")
-	
+
 	def e_VisitAddedSuccessfully(self):
 		page = OwnerInformationPage(self.driver)
 		page.clear_description()
@@ -178,7 +183,9 @@ class OwnerInformation(BaseModel):
 		page = OwnerInformationPage(self.driver)
 		self.assertEqual(page.heading_text, "Pet", "Pet heading should be present")
 
+
 class Veterinarians(BaseModel):
+
 	def e_Search(self):
 		page = VeterinariansPage(self.driver)
 		page.search_for("helen")
@@ -193,18 +200,17 @@ class Veterinarians(BaseModel):
 		self.assertEqual(page.heading_text,"Veterinarians", "Veterinarians heading should be present")
 		self.assertGreater(page.number_of_vets_in_table, 0, "At least one Veterinarian should be listed in table")
 
+
 class NewOwner(BaseModel):
 
 	def e_CorrectData(self):
 		page = NewOwnerPage(self.driver)
 		page.fill_owner_data(first_name=fake.first_name(), last_name=fake.last_name(), address=fake.address(), city=fake.city(), telephone=fake.pystr_format('##########'))
-		#page.fill_telephone(fake.pystr_format('##########'))
 		page.click_submit()
 
 	def e_IncorrectData(self):
 		page = NewOwnerPage(self.driver)
 		page.fill_owner_data()
-		#page.fill_telephone("12345678901234567890")
 		page.fill_telephone(fake.pystr_format('####################'))
 		page.click_submit()
 
