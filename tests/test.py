@@ -6,8 +6,15 @@ from faker import Faker
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from .pages import (BasePage, FindOwnersPage, HomePage, NewOwnerPage,
-                    OwnerInformationPage, OwnersPage, VeterinariansPage)
+from .pages import (
+    BasePage,
+    FindOwnersPage,
+    HomePage,
+    NewOwnerPage,
+    OwnerInformationPage,
+    OwnersPage,
+    VeterinariansPage
+)
 
 debugger = pdb.Pdb(skip=["altwalker.*"], stdout=sys.stdout)
 fake = Faker()
