@@ -45,8 +45,7 @@ jobs:
         git clone https://github.com/SpringSource/spring-petclinic.git
         cd spring-petclinic
         git checkout 4926e292700f79260a58d6faf55b232ce075b70e
-        ./mvnw package
-        java -jar target/*.jar
+        ./mvnw spring-boot:run
 
     - name: Run the tests
       run: altwalker online tests -m models/petclinic.json "random(vertex_coverage(100))"
