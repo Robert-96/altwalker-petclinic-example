@@ -1,3 +1,4 @@
+import os
 import pdb
 import sys
 import unittest
@@ -19,7 +20,8 @@ from .pages import (
 debugger = pdb.Pdb(skip=["altwalker.*"], stdout=sys.stdout)
 fake = Faker()
 
-HEADLESS = False
+HEADLESS = os.environ.get("HEADLESS", True)
+IMPLICITLY_WAIT = os.environ.get("IMPLICITLY_WAIT", 1)
 BASE_URL = "http://127.0.0.1:8080/"
 
 driver = None
@@ -37,8 +39,9 @@ def setUpRun():
     print("Create a new Firefox session")
     driver = webdriver.Firefox(options=options)
 
-    print("Set implicitly wait")
-    driver.implicitly_wait(1)
+    print("Set implicitly wait to: {}".format(IMPLICITLY_WAIT))
+    driver.implicitly_wait(IMPLICITLY_WAIT)
+
     print("Window size: {width}x{height}".format(**driver.get_window_size()))
 
 
