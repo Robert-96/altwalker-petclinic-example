@@ -1,4 +1,4 @@
-name: PentClinic AltWalker Tests
+name: Main
 
 on: [push]
 
@@ -27,6 +27,10 @@ jobs:
 
     - name: Setup AltWalker
       uses: altwalker/setup-altwalker@main
+
+    - name: Install PyPi dependencies
+      run: |
+        pip install -r requirements.txt
 
     - name: Check the models
       run: altwalker check -m models/petclinic.json "random(vertex_coverage(100))"
