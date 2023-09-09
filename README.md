@@ -4,7 +4,8 @@ AltWalker model-based testing example, implemented in Python, using the demo Pet
 
 ## Overview
 
-This repository contains a Model-Based Testing (MBT) example for [AltWalker](https://altwalker.github.io/altwalker/), based on the "famous" [PetClinic](https://github.com/spring-projects/spring-petclinic) web application. This tutorial is essentially a Python port of a [Java example](https://github.com/GraphWalker/graphwalker-example/tree/master/java-petclinic) originally created for GraphWalker, with some adaptations and cleanup. You can find some information about the models in the [GraphWalker documentation](https://github.com/GraphWalker/graphwalker-project/wiki/PetClinic).
+This repository contains a Model-Based Testing (MBT) example for [AltWalker](https://altwalker.github.io/altwalker/), based on the "famous" [PetClinic](https://github.com/spring-projects/spring-petclinic) web application. This tutorial is essentially a Python port of a [Java example](https://github.com/GraphWalker/graphwalker-example/tree/master/java-petclinic) originally created for GraphWalker,
+with some adaptations and cleanup. You can find some information about the models in the [GraphWalker documentation](https://github.com/GraphWalker/graphwalker-project/wiki/PetClinic).
 
 ## Pre-requisites
 

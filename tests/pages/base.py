@@ -1,7 +1,5 @@
 from pypom import Page
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BasePage(Page):
@@ -16,7 +14,7 @@ class BasePage(Page):
 
     @property
     def is_footer_present(self):
-       return self.is_element_present(*self._footer_logo_locator)
+        return self.is_element_present(*self._footer_logo_locator)
 
     @property
     def heading_text(self):

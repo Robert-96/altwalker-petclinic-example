@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from .base import BasePage
 
+
 class OwnersPage(BasePage):
     """Owners Page Object Model."""
 

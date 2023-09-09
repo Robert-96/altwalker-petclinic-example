@@ -12,7 +12,7 @@ class VeterinariansPage(BasePage):
 
     @property
     def is_text_present_in_vets_table(self):
-       return self.is_element_present(*self._vets_table_cel_locator)
+        return self.is_element_present(*self._vets_table_cel_locator)
 
     @property
     def number_of_vets_in_table(self):

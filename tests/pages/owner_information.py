@@ -1,8 +1,5 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys
 
 from .base import BasePage
 
@@ -63,4 +60,4 @@ class OwnerInformationPage(BasePage):
 
     @property
     def number_of_pets(self):
-       return len(self.find_elements(*self._pets_locator))
+        return len(self.find_elements(*self._pets_locator))

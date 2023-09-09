@@ -29,7 +29,7 @@ jobs:
       uses: altwalker/setup-altwalker@main
 
     - name: Check the models
-      run: altwalker check -m models/default.json "random(vertex_coverage(100))"
+      run: altwalker check -m models/petclinic.json "random(vertex_coverage(100))"
       shell: bash
 
     - name: Verify the code

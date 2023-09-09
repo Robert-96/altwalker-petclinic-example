@@ -59,7 +59,7 @@ class BaseModel(unittest.TestCase):
 
     def v_FindOwners(self):
         page = FindOwnersPage(self.driver)
-        self.assertEqual("Find Owners",page.heading_text, "Find Owners heading should be present")
+        self.assertEqual("Find Owners", page.heading_text, "Find Owners heading should be present")
         self.assertTrue(page.is_footer_present, "Footer should be present")
 
     def v_NewOwner(self):
@@ -183,7 +183,13 @@ class NewOwner(BaseModel):
         self.page = NewOwnerPage(self.driver)
 
     def e_CorrectData(self):
-        self.page.fill_owner_data(first_name=fake.first_name(), last_name=fake.last_name(), address=fake.address(), city=fake.city(), telephone=fake.pystr_format('##########'))
+        self.page.fill_owner_data(
+            first_name=fake.first_name(),
+            last_name=fake.last_name(),
+            address=fake.address(),
+            city=fake.city(),
+            telephone=fake.pystr_format('##########')
+        )
         self.page.click_submit()
 
     def e_IncorrectData(self):
