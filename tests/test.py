@@ -13,7 +13,7 @@ from .pages import (
     NewOwnerPage,
     OwnerInformationPage,
     OwnersPage,
-    VeterinariansPage
+    VeterinariansPage,
 )
 
 debugger = pdb.Pdb(skip=["altwalker.*"], stdout=sys.stdout)
