@@ -1,0 +1,48 @@
+name: PentClinic AltWalker Tests
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get the code
+      uses: actions/checkout@v4
+
+    - name: Load super-linter env variables
+      run: |
+        cat .github/super-linter.env >> "$GITHUB_ENV"
+
+    - name: Lint code base
+      uses: super-linter/super-linter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  altwalker-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup AltWalker
+      uses: altwalker/setup-altwalker@main
+
+    - name: Check the models
+      run: altwalker check -m models/default.json "random(vertex_coverage(100))"
+      shell: bash
+
+    - name: Verify the code
+      run: altwalker verify tests -m models/petclinic.json
+      shell: bash
+
+    - name: Run the tests
+      run: altwalker online tests -m models/petclinic.json "random(vertex_coverage(100))"
+      shell: bash
+
+    - name: Archive log files
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: logs
+        path: '*.log'
