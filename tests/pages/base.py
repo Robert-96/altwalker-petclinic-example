@@ -7,9 +7,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 class BasePage(Page):
     """Interact with elements common on every page, which in this case are the top menu links."""
 
-    _icon_find_owners_locator = (By.CLASS_NAME, "icon-search")
+    _home_locator = (By.CSS_SELECTOR, "a[title=\"home page\"]")
+    _find_owners_locator = (By.CSS_SELECTOR, "a[title=\"find owners\"]")
+    _veterinarians_locator = (By.CSS_SELECTOR, "a[title=\"veterinarians\"]")
 
-    _footer_logo_locator = (By.XPATH, "/html/body/div/table/tbody/tr/td[2]/img")
+    _footer_logo_locator = (By.CSS_SELECTOR, "img.logo")
     _heading_locator = (By.TAG_NAME, "h2")
 
     @property
@@ -20,5 +22,11 @@ class BasePage(Page):
     def heading_text(self):
         return self.find_element(*self._heading_locator).text
 
+    def click_home(self):
+        self.find_element(*self._home_locator).click()
+
     def click_find_owners(self):
-        self.find_element(*self._icon_find_owners_locator).click()
+        self.find_element(*self._find_owners_locator).click()
+
+    def click_veterinarians(self):
+        self.find_element(*self._veterinarians_locator).click()

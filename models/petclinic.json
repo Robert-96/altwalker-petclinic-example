@@ -1,4 +1,5 @@
 {
+    "name": "AltWalker PetClinic Example",
     "models": [
         {
             "name": "FindOwners",
@@ -1395,32 +1396,11 @@
                         "x": 0,
                         "y": 0
                     }
-                },
-                {
-                    "id": "dcb0f124-468c-11e7-a919-92ebcb67fe33",
-                    "name": "v_SearchResult",
-                    "properties": {
-                        "x": -213.34375,
-                        "y": -138.8125
-                    }
                 }
             ],
             "edges": [
-                {
-                    "id": "971eea2a-468d-11e7-a919-92ebcb67fe33",
-                    "name": "e_Search",
-                    "sourceVertexId": "dcb0defa-468c-11e7-a919-92ebcb67fe33",
-                    "targetVertexId": "dcb0f124-468c-11e7-a919-92ebcb67fe33"
-                },
-                {
-                    "id": "971eeba6-468d-11e7-a919-92ebcb67fe33",
-                    "name": "e_DoNothing",
-                    "sourceVertexId": "dcb0f124-468c-11e7-a919-92ebcb67fe33",
-                    "targetVertexId": "dcb0defa-468c-11e7-a919-92ebcb67fe33"
-                }
             ],
             "startElementId": "32ea3d10-789a-11ea-8c87-010078a2bc20"
         }
-    ],
-    "name": "GraphWalker Example Test"
+    ]
 }

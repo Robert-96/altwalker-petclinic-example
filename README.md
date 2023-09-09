@@ -26,19 +26,17 @@ To start the PetClinic demo app, follow these steps:
     ```bash
     git clone https://github.com/SpringSource/spring-petclinic.git
     cd spring-petclinic
-    ```
-
-1. Reset the repository to a specific commit:
-
-    ```bash
-    git reset --hard 482eeb1c217789b5d772f5c15c3ab7aa89caf279
+    git checkout 4926e292700f79260a58d6faf55b232ce075b70e
     ```
 
 1. Start the PetClinic app with Maven:
 
     ```bash
-    mvn tomcat7:run
+    ./mvnw package
+    java -jar target/*.jar
     ```
+
+    You can then access PetClinic demo at <http://localhost:8080/>.
 
 ## Validating the Models and Code
 

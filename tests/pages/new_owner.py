@@ -4,7 +4,7 @@ from .base import BasePage
 
 
 class NewOwnerPage(BasePage):
-    """new owner"""
+    """New Owner Page Object Model"""
 
     _submit_button_locator = (By.CSS_SELECTOR, "button[type=\"submit\"]")
 
@@ -14,17 +14,11 @@ class NewOwnerPage(BasePage):
     _city_locator = (By.ID, "city")
     _telephone_locator = (By.ID, "telephone")
 
-    _error_message_locator = (By.CSS_SELECTOR, "div.control-group.error > div.controls > span.help-inline")
-
-    _footer_logo_locator = (By.XPATH, "/html/body/table/tbody/tr/td[2]/img")
-   
-    @property
-    def is_footer_present(self):
-       return self.is_element_present(*self._footer_logo_locator)
+    _error_message_locator = (By.CSS_SELECTOR, "form span.help-inline")
 
     @property
     def error_message(self):
-       return self.is_element_present(*self._error_message_locator).text
+        return self.find_element(*self._error_message_locator).text
 
     def fill_owner_data(self, first_name="", last_name="", address="", city="", telephone=""):
         self.find_element(*self._firstname_locator).clear()
